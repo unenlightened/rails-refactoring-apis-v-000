@@ -1,17 +1,21 @@
 class RepositoriesController < ApplicationController
-  before_action :create_service
-  
+  before_action :get_service
+
   def index
-    @repos_array = service.get_repos
+    @username = @service.get_username
+    byebug
+    @repos_array = @service.get_repos
   end
 
   def create
-    service.create_repo(params[:name])
+    @service.create_repo(params[:name])
     redirect_to '/'
   end
 
   private
-  def create_service
-    service = GithubService.new(access_token: session[:token])
+
+  def get_service
+    @service ||= GithubService.new("access_token" => session[:token])
   end
+
 end
