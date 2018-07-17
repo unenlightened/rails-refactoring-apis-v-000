@@ -3,7 +3,6 @@ class RepositoriesController < ApplicationController
 
   def index
     @username = @service.get_username
-    byebug
     @repos_array = @service.get_repos
   end
 
