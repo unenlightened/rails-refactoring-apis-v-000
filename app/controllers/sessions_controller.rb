@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
     # session[:token] = @service.authenticate!(ENV["GITHUB_CLIENT"], ENV["GITHUB_SECRET"], params[:code])
 byebug
     @service = GithubService.new.authenticate!(ENV["GITHUB_CLIENT"], ENV["GITHUB_SECRET"], params[:code])
-    session[:token] = @service.access_token
+    session[:token] = @service
 
     redirect_to '/'
   end
