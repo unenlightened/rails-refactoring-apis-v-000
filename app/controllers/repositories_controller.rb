@@ -1,5 +1,5 @@
 class RepositoriesController < ApplicationController
-  before_action: :create_service
+  before_action :create_service
   
   def index
     @repos_array = service.get_repos
